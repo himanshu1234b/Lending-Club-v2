@@ -1,19 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import heroImage from "@assets/LC_Hero_Image_lg.jpg&w=3840&q=75_1771652329889.png";
 
 export function HeroSection() {
   return (
     <div className="relative bg-[#113B5E] text-white overflow-hidden min-h-[600px] flex items-center">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        {/* HTML comment for stock image replacement if needed */}
-        {/* Financial growth happy couple reviewing laptop */}
         <img 
-          src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=2069&auto=format&fit=crop" 
-          alt="Happy couple managing finances" 
-          className="w-full h-full object-cover opacity-40 mix-blend-overlay"
+          src={heroImage} 
+          alt="LendingClub Hero" 
+          className="w-full h-full object-cover opacity-60"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#113B5E] via-[#113B5E]/90 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#113B5E] via-[#113B5E]/70 to-transparent"></div>
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 md:py-20">
