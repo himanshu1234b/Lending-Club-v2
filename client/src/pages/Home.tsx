@@ -72,19 +72,8 @@ export default function Home() {
       <main className="flex-grow">
         <HeroSection />
 
-        {/* Product Grid Section - Overlapping the Hero */}
-        <section className="relative z-20 -mt-16 pb-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-[1400px] mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {products.map((product, idx) => (
-                <ProductCard key={idx} {...product} />
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Value Proposition Section */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-white">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
