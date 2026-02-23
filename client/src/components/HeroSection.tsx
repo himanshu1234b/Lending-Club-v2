@@ -32,57 +32,57 @@ export function HeroSection() {
           
           {/* Product Grid inside Hero */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 items-stretch">
-             <div className="bg-[#F3F5F9] rounded-xl p-6 text-[#113B5E] relative flex flex-col w-full min-h-[380px]">
-                <div className="absolute top-0 right-6 -translate-y-1/2 bg-[#D1FAE5] text-[#065F46] text-[10px] font-bold px-2 py-1 rounded">
+             <div className="bg-[#F3F5F9] rounded-[16px] p-5 text-[#113B5E] relative flex flex-col w-[278px] h-[279px] mx-auto">
+                <div className="absolute top-0 right-4 -translate-y-1/2 bg-[#D1FAE5] text-[#065F46] text-[9px] font-bold px-2 py-0.5 rounded shadow-sm">
                   Up to 5% APR discount³
                 </div>
-                <div className="mb-6">
-                  <img src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2FGTEk4sbaPlWPqa5HMr3l9%2F8bb90206e28c6ecf63527ce1f2e66cd2%2F_Graphicons_base.svg&w=48&q=75" alt="Debt Paydown" className="w-12 h-12" />
+                <div className="mb-3">
+                  <img src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2FGTEk4sbaPlWPqa5HMr3l9%2F8bb90206e28c6ecf63527ce1f2e66cd2%2F_Graphicons_base.svg&w=48&q=75" alt="Debt Paydown" className="w-10 h-10" />
                 </div>
-                <h3 className="font-bold text-xl mb-4">Debt Paydown Loan</h3>
-                <p className="text-[13px] text-gray-600 mb-8 flex-grow leading-relaxed">
+                <h3 className="font-bold text-base mb-2 leading-tight">Debt Paydown Loan</h3>
+                <p className="text-[11px] text-gray-600 mb-4 flex-grow leading-snug">
                   A debt consolidation loan up to $60,000 to pay off credit card debt or personal loan balances, with the option to get extra cash.
                 </p>
-                <Button variant="outline" className="w-full border-[#0077B3] text-[#0077B3] hover:bg-[#0077B3] hover:text-white font-bold rounded-md py-6 text-sm">
+                <Button variant="outline" className="w-full border-[#0077B3] text-[#0077B3] hover:bg-[#0077B3] hover:text-white font-bold rounded-md py-4 text-xs h-10">
                   Check Your Rate
                 </Button>
              </div>
 
-             <div className="bg-[#F3F5F9] rounded-xl p-6 text-[#113B5E] flex flex-col w-full min-h-[380px]">
-                <div className="mb-6">
-                  <img src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F1BcDwu8woS0Udh3GtLTBk5%2F7143bfcc9707a58b86d87a6ac72350b0%2F_Graphicons_base__1_.svg&w=48&q=75" alt="Cash Loan" className="w-12 h-12" />
+             <div className="bg-[#F3F5F9] rounded-[16px] p-5 text-[#113B5E] flex flex-col w-[278px] h-[279px] mx-auto">
+                <div className="mb-3">
+                  <img src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F1BcDwu8woS0Udh3GtLTBk5%2F7143bfcc9707a58b86d87a6ac72350b0%2F_Graphicons_base__1_.svg&w=48&q=75" alt="Cash Loan" className="w-10 h-10" />
                 </div>
-                <h3 className="font-bold text-xl mb-4">Cash Loan</h3>
-                <p className="text-[13px] text-gray-600 mb-8 flex-grow leading-relaxed">
+                <h3 className="font-bold text-base mb-2 leading-tight">Cash Loan</h3>
+                <p className="text-[11px] text-gray-600 mb-4 flex-grow leading-snug">
                   A personal loan up to $60,000 to cover expenses like a major purchase, home improvements, life events, etc.
                 </p>
-                <Button variant="outline" className="w-full border-[#0077B3] text-[#0077B3] hover:bg-[#0077B3] hover:text-white font-bold rounded-md py-6 text-sm">
+                <Button variant="outline" className="w-full border-[#0077B3] text-[#0077B3] hover:bg-[#0077B3] hover:text-white font-bold rounded-md py-4 text-xs h-10">
                   Check Your Rate
                 </Button>
              </div>
 
-             <div className="bg-[#F3F5F9] rounded-xl p-6 text-[#113B5E] flex flex-col w-full min-h-[380px]">
-                <div className="mb-6">
-                  <img src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2FPAI9KKYKj07gxZFYHMHXW%2Fe922d5ebc335e99f32446b372485a523%2F_Graphicons_base__2_.svg&w=48&q=75" alt="Large Expense" className="w-12 h-12" />
+             <div className="bg-[#F3F5F9] rounded-[16px] p-5 text-[#113B5E] flex flex-col w-[278px] h-[279px] mx-auto">
+                <div className="mb-3">
+                  <img src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2FPAI9KKYKj07gxZFYHMHXW%2Fe922d5ebc335e99f32446b372485a523%2F_Graphicons_base__2_.svg&w=48&q=75" alt="Large Expense" className="w-10 h-10" />
                 </div>
-                <h3 className="font-bold text-xl mb-4">Pay for a Large Expense</h3>
-                <p className="text-[13px] text-gray-600 mb-8 flex-grow leading-relaxed">
+                <h3 className="font-bold text-base mb-2 leading-tight">Pay for a Large Expense</h3>
+                <p className="text-[11px] text-gray-600 mb-4 flex-grow leading-snug">
                   Get up to $65,000 to cover medical treatments, wellness services, tutoring, large retail purchases, and more.
                 </p>
-                <Button variant="outline" className="w-full border-[#0077B3] text-[#0077B3] hover:bg-[#0077B3] hover:text-white font-bold rounded-md py-6 text-sm">
+                <Button variant="outline" className="w-full border-[#0077B3] text-[#0077B3] hover:bg-[#0077B3] hover:text-white font-bold rounded-md py-4 text-xs h-10">
                   Check Your Rate
                 </Button>
              </div>
 
-             <div className="bg-[#F3F5F9] rounded-xl p-6 text-[#113B5E] flex flex-col w-full min-h-[380px]">
-                <div className="mb-6">
-                  <img src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F30QRTLfPiWmCM3kndvnwM3%2Fabfe00d3007f15f9770c6f225041d9a6%2FCar_Refi_Loan.svg&w=48&q=75" alt="Auto Loan" className="w-12 h-12" />
+             <div className="bg-[#F3F5F9] rounded-[16px] p-5 text-[#113B5E] flex flex-col w-[278px] h-[279px] mx-auto">
+                <div className="mb-3">
+                  <img src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F30QRTLfPiWmCM3kndvnwM3%2Fabfe00d3007f15f9770c6f225041d9a6%2FCar_Refi_Loan.svg&w=48&q=75" alt="Auto Loan" className="w-10 h-10" />
                 </div>
-                <h3 className="font-bold text-xl mb-4">Auto Loan Refinance</h3>
-                <p className="text-[13px] text-gray-600 mb-8 flex-grow leading-relaxed">
+                <h3 className="font-bold text-base mb-2 leading-tight">Auto Loan Refinance</h3>
+                <p className="text-[11px] text-gray-600 mb-4 flex-grow leading-snug">
                   Flexible terms and competitive rates could help you pay less than you are right now.
                 </p>
-                <Button variant="outline" className="w-full border-[#0077B3] text-[#0077B3] hover:bg-[#0077B3] hover:text-white font-bold rounded-md py-6 text-sm">
+                <Button variant="outline" className="w-full border-[#0077B3] text-[#0077B3] hover:bg-[#0077B3] hover:text-white font-bold rounded-md py-4 text-xs h-10">
                   Check Your Rate
                 </Button>
              </div>
