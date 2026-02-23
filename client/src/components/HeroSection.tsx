@@ -31,8 +31,8 @@ export function HeroSection() {
           </div>
           
           {/* Product Grid inside Hero */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 items-stretch">
-             <div className="bg-[#F3F5F9] rounded-[16px] p-5 text-[#113B5E] relative flex flex-col w-[278px] h-[279px] mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 items-start justify-items-center">
+             <div className="bg-[#F3F5F9] rounded-[16px] p-5 text-[#113B5E] relative flex flex-col w-[278px] min-h-[279px] shrink-0">
                 <div className="absolute top-0 right-4 -translate-y-1/2 bg-[#D1FAE5] text-[#065F46] text-[9px] font-bold px-2 py-0.5 rounded shadow-sm">
                   Up to 5% APR discount³
                 </div>
@@ -48,7 +48,7 @@ export function HeroSection() {
                 </Button>
              </div>
 
-             <div className="bg-[#F3F5F9] rounded-[16px] p-5 text-[#113B5E] flex flex-col w-[278px] h-[279px] mx-auto">
+             <div className="bg-[#F3F5F9] rounded-[16px] p-5 text-[#113B5E] flex flex-col w-[278px] min-h-[279px] shrink-0">
                 <div className="mb-3">
                   <img src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F1BcDwu8woS0Udh3GtLTBk5%2F7143bfcc9707a58b86d87a6ac72350b0%2F_Graphicons_base__1_.svg&w=48&q=75" alt="Cash Loan" className="w-10 h-10" />
                 </div>
@@ -61,7 +61,7 @@ export function HeroSection() {
                 </Button>
              </div>
 
-             <div className="bg-[#F3F5F9] rounded-[16px] p-5 text-[#113B5E] flex flex-col w-[278px] h-[279px] mx-auto">
+             <div className="bg-[#F3F5F9] rounded-[16px] p-5 text-[#113B5E] flex flex-col w-[278px] min-h-[279px] shrink-0">
                 <div className="mb-3">
                   <img src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2FPAI9KKYKj07gxZFYHMHXW%2Fe922d5ebc335e99f32446b372485a523%2F_Graphicons_base__2_.svg&w=48&q=75" alt="Large Expense" className="w-10 h-10" />
                 </div>
@@ -74,7 +74,7 @@ export function HeroSection() {
                 </Button>
              </div>
 
-             <div className="bg-[#F3F5F9] rounded-[16px] p-5 text-[#113B5E] flex flex-col w-[278px] h-[279px] mx-auto">
+             <div className="bg-[#F3F5F9] rounded-[16px] p-5 text-[#113B5E] flex flex-col w-[278px] min-h-[279px] shrink-0">
                 <div className="mb-3">
                   <img src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F30QRTLfPiWmCM3kndvnwM3%2Fabfe00d3007f15f9770c6f225041d9a6%2FCar_Refi_Loan.svg&w=48&q=75" alt="Auto Loan" className="w-10 h-10" />
                 </div>
