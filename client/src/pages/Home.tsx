@@ -43,16 +43,19 @@ const HOW_IT_WORKS_STEPS = [
     number: "01",
     title: "Apply online in minutes",
     description: "Get customized loan options based on what you tell us.",
+    image: "https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F4WtKE18RnUTV2FNK6g6uXF%2Fd521aea3a8d9b7f8ae75e029358268d0%2FHIW.png&w=1200&q=75",
   },
   {
     number: "02",
     title: "Choose a loan offer",
     description: "Select the rate, term, and payment options you like best.",
+    image: "https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F6c9xYnN3ToK8cVWg93eLRK%2Fdae40b25d548a8d857d821c32c2be37c%2FPL_Module_Pg02.png&w=1200&q=75",
   },
   {
     number: "03",
     title: "Get funded in as little as 24 hours",
     description: "Once your loan is approved for funding, we'll pay your creditors directly or send the money in as little as 24 hours.⁵",
+    image: "https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2FfZzeGAjnsj6WUnJcLklY8%2Fe5f090f5db66fafd40fa101611767a6c%2FPL_Module_Pg03.png&w=1200&q=75",
   },
 ];
 
@@ -178,42 +181,91 @@ export default function Home() {
         </section>
 
         {/* ── How a Personal Loan Works ── */}
-        <section className="py-16 bg-[#F3F5F9]">
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#113B5E] text-center mb-12">
+        <section className="py-16 bg-white">
+          <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+
+            {/* Section heading */}
+            <h2
+              className="text-2xl md:text-[32px] font-extrabold text-center mb-14 leading-tight"
+              style={{ color: "#113B5E" }}
+              data-testid="heading-how-it-works"
+            >
               How a personal loan with LendingClub works
             </h2>
 
-            {/* Steps */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              {HOW_IT_WORKS_STEPS.map((step) => (
-                <div key={step.number} className="flex flex-col items-center text-center">
-                  <div className="w-14 h-14 rounded-full bg-[#0077B3] text-white flex items-center justify-center font-extrabold text-xl mb-4">
-                    {step.number}
+            {/* Steps row with connecting line */}
+            <div className="relative mb-2">
+              {/* Horizontal connector line (desktop only) */}
+              <div
+                className="hidden md:block absolute h-[2px] top-7 z-0"
+                style={{
+                  backgroundColor: "#D0E3ED",
+                  left: "calc(16.67% + 28px)",
+                  right: "calc(16.67% + 28px)",
+                }}
+              />
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                {HOW_IT_WORKS_STEPS.map((step) => (
+                  <div
+                    key={step.number}
+                    className="flex flex-col items-center text-center"
+                    data-testid={`step-hiw-${step.number}`}
+                  >
+                    {/* Number circle */}
+                    <div
+                      className="relative z-10 w-14 h-14 rounded-full text-white flex items-center justify-center font-extrabold text-xl mb-5 shrink-0 shadow-sm"
+                      style={{ backgroundColor: "#0A3A5C" }}
+                    >
+                      {step.number}
+                    </div>
+
+                    {/* Title */}
+                    <h3
+                      className="font-extrabold text-base md:text-[17px] leading-snug mb-2 px-2"
+                      style={{ color: "#113B5E" }}
+                    >
+                      {step.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-[13px] md:text-sm leading-relaxed px-2" style={{ color: "#4A6A80" }}>
+                      {step.description}
+                    </p>
                   </div>
-                  <h3 className="text-[#113B5E] font-bold text-lg mb-2">{step.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                ))}
+              </div>
+            </div>
+
+            {/* App screenshot images — one per step */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12 mt-8">
+              {HOW_IT_WORKS_STEPS.map((step) => (
+                <div
+                  key={`img-${step.number}`}
+                  className="rounded-2xl overflow-hidden bg-[#F0F6FB] border border-[#D0E3ED]"
+                  data-testid={`img-hiw-${step.number}`}
+                >
+                  <img
+                    src={step.image}
+                    alt={step.title}
+                    className="w-full h-auto object-contain"
+                    loading="lazy"
+                  />
                 </div>
               ))}
             </div>
 
-            {/* HIW Illustration */}
-            <div className="rounded-2xl overflow-hidden mb-8">
-              <img
-                src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F4WtKE18RnUTV2FNK6g6uXF%2Fd521aea3a8d9b7f8ae75e029358268d0%2FHIW.png&w=3840&q=75"
-                alt="How it works illustration"
-                className="w-full object-contain max-h-[300px]"
-                data-testid="img-how-it-works"
-              />
-            </div>
-
+            {/* CTA */}
             <div className="flex justify-center">
-              <Button
-                className="bg-[#EE5F3F] hover:bg-[#D94E30] text-white font-bold rounded-full px-10 py-3 text-sm"
+              <button
+                className="font-bold rounded-full px-10 py-3 text-sm text-white transition-colors"
+                style={{ backgroundColor: "#EE5F3F" }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#D94E30")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#EE5F3F")}
                 data-testid="btn-check-rate-hiw"
               >
                 Check Your Rate
-              </Button>
+              </button>
             </div>
           </div>
         </section>

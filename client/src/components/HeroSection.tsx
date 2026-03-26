@@ -39,83 +39,77 @@ const CARDS = [
 export function HeroSection() {
   return (
     <section
-      className="relative text-white overflow-hidden min-h-[620px] flex items-stretch"
-      style={{ backgroundColor: "#000000" }}
+      className="relative text-white overflow-hidden flex flex-col"
+      style={{ backgroundColor: "#000000", minHeight: "680px" }}
     >
-      {/* ── Background Image ── */}
+      {/* ── Background Image ── full cover, top-anchored so face is visible */}
       <div className="absolute inset-0 z-0">
         <img
           src={heroImage}
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover object-center lg:object-right"
+          className="w-full h-full object-cover object-top"
         />
         {/*
-          Real LC gradient:
-          Left 40%  → solid #030E1C (text is always readable)
-          40→60%   → fades to ~70% opacity (transition zone)
-          60→100%  → fades to near-transparent (image shows on right)
+          Bottom-fade gradient:
+          - Top 35%: image fully visible (no overlay)
+          - 35→65%: gentle dark ramp
+          - 65%→100% (bottom): solid black — this is where text/cards sit
         */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, #000000 0%, #000000 38%, rgba(0,0,0,0.94) 48%, rgba(0,0,0,0.75) 60%, rgba(0,0,0,0.15) 100%)",
+              "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.82) 65%, rgba(0,0,0,0.97) 78%, #000000 90%)",
           }}
         />
       </div>
 
-      {/* ── Content ── */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-12 lg:py-16 flex flex-col justify-center">
+      {/* ── Spacer pushes content to the bottom ── */}
+      <div className="flex-1" />
 
-        {/* Text block — constrained to left ~55% on desktop so image shows right */}
-        <div className="w-full lg:max-w-[56%]">
+      {/* ── Content sits at the bottom, over the dark gradient ── */}
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-8 lg:pb-12">
 
-          {/* Rate pill */}
-          <p
-            className="text-xs sm:text-sm font-semibold mb-4 tracking-wide"
-            style={{ color: "#74CCF4" }}
-          >
-            Personal loan rates starting as low as{" "}
-            <span className="font-extrabold text-white">6.53% APR¹</span>
+        {/* Rate pill */}
+        <p
+          className="text-xs sm:text-sm font-semibold mb-3 tracking-wide"
+          style={{ color: "#74CCF4" }}
+        >
+          Personal loan rates starting as low as{" "}
+          <span className="font-extrabold text-white">6.53% APR¹</span>
+        </p>
+
+        {/* Main headline */}
+        <h1
+          className="font-extrabold leading-[1.15] mb-3 max-w-2xl"
+          style={{ fontSize: "clamp(26px, 3.5vw, 48px)", letterSpacing: "-0.02em" }}
+        >
+          <span className="text-white">Your finances matter to you</span>
+          <br />
+          <span style={{ color: "#74CCF4" }}>and that matters to us.</span>
+        </h1>
+
+        {/* Sub-text */}
+        <p
+          className="text-sm sm:text-base mb-7 max-w-md leading-relaxed"
+          style={{ color: "#B8CDD9" }}
+        >
+          Keep more of what you earn and earn more on what you save.<sup className="text-[10px]">2</sup>
+        </p>
+
+        {/* "What are you looking for?" */}
+        <div className="mb-5">
+          <h2 className="text-base sm:text-lg font-bold text-white mb-1">
+            What are you looking for?
+          </h2>
+          <p className="text-xs" style={{ color: "#8BAABB" }}>
+            Check your rate. It won't impact your credit score.<sup>3</sup>
           </p>
-
-          {/* Main headline */}
-          <h1
-            className="font-extrabold leading-[1.15] mb-4"
-            style={{
-              fontSize: "clamp(28px, 4vw, 52px)",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            <span className="text-white">Your finances matter to you</span>
-            <br />
-            <span style={{ color: "#74CCF4" }}>and that matters to us.</span>
-          </h1>
-
-          {/* Sub-text */}
-          <p
-            className="text-sm sm:text-base mb-8 max-w-md leading-relaxed"
-            style={{ color: "#A8C7D8" }}
-          >
-            Keep more of what you earn and earn more on what you save.
-            <sup className="text-[10px]">2</sup>
-          </p>
-
-          {/* "What are you looking for?" */}
-          <div className="mb-5">
-            <h2 className="text-base sm:text-lg font-bold text-white mb-1">
-              What are you looking for?
-            </h2>
-            <p className="text-xs" style={{ color: "#7D9AAE" }}>
-              Check your rate. It won't impact your credit score.
-              <sup>3</sup>
-            </p>
-          </div>
         </div>
 
-        {/* ── Product Cards — full width ── */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-7 w-full">
+        {/* ── Product Cards ── */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 w-full">
           {CARDS.map((card) => (
             <div
               key={card.id}
@@ -123,7 +117,6 @@ export function HeroSection() {
               style={{ backgroundColor: "#F0F4F8" }}
               data-testid={`card-product-${card.id}`}
             >
-              {/* Badge */}
               {card.hasBadge && (
                 <span
                   className="absolute -top-3.5 right-3 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full whitespace-nowrap shadow-md z-10"
@@ -132,47 +125,31 @@ export function HeroSection() {
                   {card.badge}
                 </span>
               )}
-
-              {/* Icon */}
               <img
                 src={card.icon}
                 alt={card.title}
                 className="w-9 h-9 sm:w-11 sm:h-11 mb-3 shrink-0"
               />
-
-              {/* Title */}
               <h3
                 className="font-extrabold text-sm leading-snug mb-2"
                 style={{ color: "#113B5E" }}
               >
                 {card.title}
               </h3>
-
-              {/* Description */}
               <p
                 className="text-[11px] leading-snug flex-grow mb-3"
                 style={{ color: "#5A7A8E" }}
               >
                 {card.desc}
               </p>
-
-              {/* Sub-rate */}
               {card.sub && (
-                <p
-                  className="text-[10px] font-semibold mb-2"
-                  style={{ color: "#0077B3" }}
-                >
+                <p className="text-[10px] font-semibold mb-2" style={{ color: "#0077B3" }}>
                   {card.sub}
                 </p>
               )}
-
-              {/* CTA button */}
               <button
                 className="w-full border font-bold rounded-lg py-2 text-[11px] sm:text-xs transition-colors"
-                style={{
-                  borderColor: "#0077B3",
-                  color: "#0077B3",
-                }}
+                style={{ borderColor: "#0077B3", color: "#0077B3", backgroundColor: "transparent" }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#0077B3";
                   (e.currentTarget as HTMLButtonElement).style.color = "#fff";
@@ -189,8 +166,8 @@ export function HeroSection() {
           ))}
         </div>
 
-        {/* ── Bottom trust links ── */}
-        <div className="flex flex-wrap items-center gap-5 text-xs" style={{ color: "#7D9AAE" }}>
+        {/* ── Trust links ── */}
+        <div className="flex flex-wrap items-center gap-5 text-xs" style={{ color: "#8BAABB" }}>
           <a
             href="#"
             className="flex items-center gap-1.5 hover:text-white transition-colors"
@@ -201,7 +178,6 @@ export function HeroSection() {
             </svg>
             Respond to Mail Offer
           </a>
-
           <div className="flex items-center gap-1.5">
             <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
