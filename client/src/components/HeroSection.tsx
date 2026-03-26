@@ -40,7 +40,7 @@ export function HeroSection() {
   return (
     <section
       className="relative text-white overflow-hidden min-h-[620px] flex items-stretch"
-      style={{ backgroundColor: "#1e2f3a" }}
+      style={{ backgroundColor: "#000000" }}
     >
       {/* ── Background Image ── */}
       <div className="absolute inset-0 z-0">
@@ -60,7 +60,7 @@ export function HeroSection() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, #1e2f3a 0%, #1e2f3a 38%, rgba(30,47,58,0.94) 48%, rgba(30,47,58,0.75) 60%, rgba(30,47,58,0.15) 100%)",
+              "linear-gradient(to right, #000000 0%, #000000 38%, rgba(0,0,0,0.94) 48%, rgba(0,0,0,0.75) 60%, rgba(0,0,0,0.15) 100%)",
           }}
         />
       </div>
