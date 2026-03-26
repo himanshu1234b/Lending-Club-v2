@@ -364,7 +364,14 @@ export default function Home() {
               </div>
               {/* Text — right side */}
               <div className="order-2">
-                <h2 className="text-2xl md:text-3xl font-extrabold mb-4 leading-tight" style={{ color: "#113B5E" }}>
+                <h2
+                  className="mb-4 font-black"
+                  style={{
+                    color: "#113B5E",
+                    fontSize: "clamp(1.5rem, 4vw, 2.25rem)",
+                    lineHeight: "1.1666666667em",
+                  }}
+                >
                   Your membership gets better in the app
                 </h2>
                 <p className="text-base mb-4" style={{ color: "#4A6A80" }}>
