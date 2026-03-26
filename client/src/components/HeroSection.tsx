@@ -17,17 +17,20 @@ export function HeroSection() {
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-2xl">
+          <p className="text-[#89D3F8] font-bold text-sm md:text-base mb-3 tracking-wide">
+            Personal loan rates starting as low as <span className="text-white">6.53% APR¹</span>
+          </p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 leading-[1.1] text-white">
             Your finances matter to you <br />
             <span className="text-[#89D3F8]">and that matters to us.</span>
           </h1>
           <p className="text-sm md:text-base text-gray-300 mb-12 max-w-lg">
-            Keep more of what you earn and earn more on what you save.<sup>1</sup>
+            Keep more of what you earn and earn more on what you save.<sup>2</sup>
           </p>
 
           <div className="mb-8">
             <h2 className="text-xl font-bold mb-2">What are you looking for?</h2>
-            <p className="text-sm text-gray-400">Check your rate. It won't impact your credit score.<sup>2</sup></p>
+            <p className="text-sm text-gray-400">Check your rate. It won't impact your credit score.<sup>3</sup></p>
           </div>
           
           {/* Product Grid inside Hero */}
