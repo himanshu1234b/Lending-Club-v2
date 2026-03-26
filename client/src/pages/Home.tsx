@@ -429,7 +429,7 @@ export default function Home() {
                 <img
                   src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F80cmCydXU92Eabp4rwdQY%2Fac1f6ee08309f9f765d5dc1eaac24002%2FHome_Page_Review_Photo_Updated2025.png&w=3840&q=75"
                   alt="Happy LendingClub member"
-                  className="w-full h-[360px] object-cover"
+                  className="w-full h-auto object-contain"
                   data-testid="img-testimonial-photo"
                 />
               </div>
