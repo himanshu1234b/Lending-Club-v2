@@ -220,7 +220,7 @@ export default function Home() {
                       <button
                         key={i}
                         onClick={() => { setActiveHiw(i); restartHiwTimer(); }}
-                        className="w-3 h-3 transition-all duration-300"
+                        className="w-2 h-2 transition-all duration-300"
                         style={{
                           backgroundColor: activeHiw === i ? "#EE5F3F" : "#F5C4B8",
                           transform: activeHiw === i ? "scale(1.2)" : "scale(1)",
@@ -249,26 +249,18 @@ export default function Home() {
                   {HOW_IT_WORKS_STEPS.map((step) => (
                     <div
                       key={step.number}
-                      className="flex items-start gap-4 text-left px-2"
+                      className="text-left px-2"
                       data-testid={`step-hiw-${step.number}`}
                     >
-                      {/* Orange square dot */}
-                      <div
-                        className="w-3 h-3 shrink-0 mt-2"
-                        style={{ backgroundColor: "#EE5F3F", borderRadius: "2px" }}
-                      />
-
-                      <div>
-                        <h3
-                          className="font-extrabold text-[18px] leading-snug mb-2"
-                          style={{ color: "#0A3A5C" }}
-                        >
-                          {step.title}
-                        </h3>
-                        <p className="text-[15px] leading-relaxed" style={{ color: "#4A6A80" }}>
-                          {step.description}
-                        </p>
-                      </div>
+                      <h3
+                        className="font-extrabold text-[20px] leading-snug mb-2"
+                        style={{ color: "#0A3A5C" }}
+                      >
+                        {step.title}
+                      </h3>
+                      <p className="text-[16px] leading-relaxed" style={{ color: "#4A6A80" }}>
+                        {step.description}
+                      </p>
                     </div>
                   ))}
                 </div>
