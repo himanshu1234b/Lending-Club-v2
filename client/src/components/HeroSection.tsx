@@ -82,7 +82,7 @@ export function HeroSection() {
             2 columns on small screens, 4 on xl.
             Cards are fully fluid — no fixed pixel widths.
         ── */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 max-w-[960px]">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 w-full">
           {CARDS.map((card) => (
             <div
               key={card.id}
