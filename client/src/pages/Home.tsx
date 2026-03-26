@@ -174,14 +174,26 @@ export default function Home() {
                 <p className="text-gray-600 text-base leading-relaxed mb-6">
                   {product.body}
                 </p>
-                <Button
-                  asChild
-                  className="bg-[#EE5F3F] hover:bg-[#D94E30] text-white font-bold rounded-full px-8 py-3 text-sm"
+                <a
+                  href={product.href}
+                  data-testid="btn-product-learn-more"
+                  className="inline-block font-bold px-12 py-3 text-sm transition-colors"
+                  style={{ backgroundColor: "#ffffff", color: "#113B5E", border: "1px solid #113B5E", borderRadius: "8px" }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLAnchorElement;
+                    el.style.backgroundColor = "#0077B3";
+                    el.style.color = "#ffffff";
+                    el.style.borderColor = "#0077B3";
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLAnchorElement;
+                    el.style.backgroundColor = "#ffffff";
+                    el.style.color = "#113B5E";
+                    el.style.borderColor = "#113B5E";
+                  }}
                 >
-                  <a href={product.href} data-testid="btn-product-learn-more">
-                    {product.cta}
-                  </a>
-                </Button>
+                  {product.cta}
+                </a>
               </div>
               <div className="order-1 lg:order-2 rounded-2xl overflow-hidden shadow-xl">
                 <img
@@ -305,12 +317,25 @@ export default function Home() {
                   by GOBankingRates. Our award-winning checking, savings, and loan products
                   are designed to help our members achieve their financial goals.
                 </p>
-                <Button
-                  className="bg-[#EE5F3F] hover:bg-[#D94E30] text-white font-bold rounded-full px-8 py-3 text-sm"
+                <button
                   data-testid="btn-learn-more-banking"
+                  className="font-bold px-12 py-3 text-sm transition-colors"
+                  style={{ backgroundColor: "#ffffff", color: "#113B5E", border: "1px solid #113B5E", borderRadius: "8px" }}
+                  onMouseEnter={(e) => {
+                    const btn = e.currentTarget as HTMLButtonElement;
+                    btn.style.backgroundColor = "#0077B3";
+                    btn.style.color = "#ffffff";
+                    btn.style.borderColor = "#0077B3";
+                  }}
+                  onMouseLeave={(e) => {
+                    const btn = e.currentTarget as HTMLButtonElement;
+                    btn.style.backgroundColor = "#ffffff";
+                    btn.style.color = "#113B5E";
+                    btn.style.borderColor = "#113B5E";
+                  }}
                 >
                   Learn More
-                </Button>
+                </button>
               </div>
               <div className="flex justify-center">
                 <img
