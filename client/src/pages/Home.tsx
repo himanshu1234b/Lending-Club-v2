@@ -483,7 +483,7 @@ export default function Home() {
               </div>
               {/* Right: FAQ items + button — remaining 65% */}
               <div className="w-full lg:flex-1">
-                <div className="bg-white rounded-2xl shadow-sm px-6 py-2 mb-6">
+                <div className="mb-6">
                   {FAQ_ITEMS.map((item) => (
                     <FAQItem key={item.question} question={item.question} answer={item.answer} />
                   ))}
