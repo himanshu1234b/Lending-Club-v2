@@ -58,12 +58,26 @@ export function Navbar() {
             >
               Sign In
             </button>
-            <button
-              className="px-5 py-2 text-sm font-bold text-white bg-[#EE5F3F] rounded-full hover:bg-[#D94E30] transition-colors shadow-sm"
-              data-testid="btn-check-rate-nav"
+            <Link
+              href="/verify"
+              className="inline-block font-bold px-5 py-2 text-sm transition-colors"
+              style={{ backgroundColor: "#ffffff", color: "#113B5E", border: "1px solid #113B5E", borderRadius: "8px" }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.backgroundColor = "#0077B3";
+                el.style.color = "#ffffff";
+                el.style.borderColor = "#0077B3";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.backgroundColor = "#ffffff";
+                el.style.color = "#113B5E";
+                el.style.borderColor = "#113B5E";
+              }}
+              data-testid="btn-start-verification-nav"
             >
-              Check Your Rate
-            </button>
+              Start Verification
+            </Link>
           </div>
 
           {/* ── Mobile Hamburger ── */}
@@ -99,12 +113,26 @@ export function Navbar() {
               >
                 Sign In
               </button>
-              <button
-                className="w-full py-3 text-sm font-bold text-white bg-[#EE5F3F] rounded-full hover:bg-[#D94E30] transition-colors"
-                data-testid="mobile-btn-check-rate"
+              <Link
+                href="/verify"
+                className="block w-full text-center font-bold py-3 text-sm transition-colors"
+                style={{ backgroundColor: "#ffffff", color: "#113B5E", border: "1px solid #113B5E", borderRadius: "8px" }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.backgroundColor = "#0077B3";
+                  el.style.color = "#ffffff";
+                  el.style.borderColor = "#0077B3";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.backgroundColor = "#ffffff";
+                  el.style.color = "#113B5E";
+                  el.style.borderColor = "#113B5E";
+                }}
+                data-testid="mobile-btn-start-verification"
               >
-                Check Your Rate
-              </button>
+                Start Verification
+              </Link>
             </div>
           </div>
         </div>
