@@ -85,7 +85,7 @@
 }
 
 .hero-overlay {
-  background: linear-gradient(to right, #030E1C 0%, #030E1C 38%, rgba(3,14,28,0.92) 48%, rgba(3,14,28,0.72) 60%, rgba(3,14,28,0.18) 100%);
+  background: linear-gradient(to right, #4a6271 0%, #4a6271 38%, rgba(74,98,113,0.94) 48%, rgba(74,98,113,0.75) 60%, rgba(74,98,113,0.15) 100%);
 }
 
 /* Prevent global heading color override inside the dark hero section */
