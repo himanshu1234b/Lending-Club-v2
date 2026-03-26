@@ -267,19 +267,21 @@ export default function Home() {
 
                 {/* CTA */}
                 <button
-                  className="font-bold rounded px-12 py-3 text-sm transition-colors border-2"
-                  style={{ backgroundColor: "#ffffff", color: "#113B5E", borderColor: "#113B5E" }}
+                  className="font-bold px-12 py-3 text-sm transition-colors border"
+                  style={{ backgroundColor: "#ffffff", color: "#113B5E", borderColor: "#113B5E", borderWidth: "1px", borderStyle: "solid", borderRadius: "8px" }}
                   onMouseEnter={(e) => {
                     const btn = e.currentTarget as HTMLButtonElement;
                     btn.style.backgroundColor = "#0077B3";
                     btn.style.color = "#ffffff";
                     btn.style.borderColor = "#0077B3";
+                    btn.style.borderRadius = "8px";
                   }}
                   onMouseLeave={(e) => {
                     const btn = e.currentTarget as HTMLButtonElement;
                     btn.style.backgroundColor = "#ffffff";
                     btn.style.color = "#113B5E";
                     btn.style.borderColor = "#113B5E";
+                    btn.style.borderRadius = "8px";
                   }}
                   data-testid="btn-check-rate-hiw"
                 >
