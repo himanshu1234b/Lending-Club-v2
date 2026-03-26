@@ -354,7 +354,7 @@ export default function Home() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Image — left side */}
-              <div className="flex justify-center order-1">
+              <div className="flex justify-center order-1 w-full">
                 <img
                   src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F14Hq7vxTrLPpeXFCACXMZa%2Ffe41e3745fd28cad2dd657217645d61e%2FGroup_1000002031.svg&w=768&q=75"
                   alt="LendingClub mobile app screens"
@@ -363,7 +363,7 @@ export default function Home() {
                 />
               </div>
               {/* Text — right side */}
-              <div className="order-2">
+              <div className="order-2 w-full">
                 <h2
                   className="mb-4 font-black"
                   style={{
