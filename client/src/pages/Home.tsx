@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { HeroSection } from "@/components/HeroSection";
@@ -116,6 +116,21 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<"personal" | "auto" | "banking">("personal");
   const product = PRODUCTS_CONTENT[activeTab];
 
+  const [activeHiw, setActiveHiw] = useState(0);
+  const hiwTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const restartHiwTimer = () => {
+    if (hiwTimerRef.current) clearInterval(hiwTimerRef.current);
+    hiwTimerRef.current = setInterval(() => {
+      setActiveHiw((prev) => (prev + 1) % HOW_IT_WORKS_STEPS.length);
+    }, 4000);
+  };
+
+  useEffect(() => {
+    restartHiwTimer();
+    return () => { if (hiwTimerRef.current) clearInterval(hiwTimerRef.current); };
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-white font-[Mulish,sans-serif]">
       <Navbar />
@@ -181,91 +196,111 @@ export default function Home() {
         </section>
 
         {/* ── How a Personal Loan Works ── */}
-        <section className="py-16 bg-white">
+        <section className="py-16 lg:py-20 bg-white" data-testid="section-how-it-works">
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
 
-            {/* Section heading */}
-            <h2
-              className="text-2xl md:text-[32px] font-extrabold text-center mb-14 leading-tight"
-              style={{ color: "#113B5E" }}
-              data-testid="heading-how-it-works"
-            >
-              How a personal loan with LendingClub works
-            </h2>
+              {/* ── LEFT: Auto-switching app screenshot ── */}
+              <div className="w-full lg:w-[48%] shrink-0">
+                <div className="relative rounded-3xl overflow-hidden bg-[#EFF5FA] aspect-[4/3]">
+                  {HOW_IT_WORKS_STEPS.map((step, i) => (
+                    <img
+                      key={step.number}
+                      src={step.image}
+                      alt={step.title}
+                      className="absolute inset-0 w-full h-full object-contain p-4 transition-opacity duration-700"
+                      style={{ opacity: activeHiw === i ? 1 : 0 }}
+                      data-testid={`img-hiw-${step.number}`}
+                    />
+                  ))}
 
-            {/* Steps row with connecting line */}
-            <div className="relative mb-2">
-              {/* Horizontal connector line (desktop only) */}
-              <div
-                className="hidden md:block absolute h-[2px] top-7 z-0"
-                style={{
-                  backgroundColor: "#D0E3ED",
-                  left: "calc(16.67% + 28px)",
-                  right: "calc(16.67% + 28px)",
-                }}
-              />
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                {HOW_IT_WORKS_STEPS.map((step) => (
-                  <div
-                    key={step.number}
-                    className="flex flex-col items-center text-center"
-                    data-testid={`step-hiw-${step.number}`}
-                  >
-                    {/* Number circle */}
-                    <div
-                      className="relative z-10 w-14 h-14 rounded-full text-white flex items-center justify-center font-extrabold text-xl mb-5 shrink-0 shadow-sm"
-                      style={{ backgroundColor: "#0A3A5C" }}
-                    >
-                      {step.number}
-                    </div>
-
-                    {/* Title */}
-                    <h3
-                      className="font-extrabold text-base md:text-[17px] leading-snug mb-2 px-2"
-                      style={{ color: "#113B5E" }}
-                    >
-                      {step.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-[13px] md:text-sm leading-relaxed px-2" style={{ color: "#4A6A80" }}>
-                      {step.description}
-                    </p>
+                  {/* Dot indicators */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {HOW_IT_WORKS_STEPS.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => { setActiveHiw(i); restartHiwTimer(); }}
+                        className="w-2 h-2 rounded-full transition-all duration-300"
+                        style={{
+                          backgroundColor: activeHiw === i ? "#0077B3" : "#B8D4E6",
+                          transform: activeHiw === i ? "scale(1.3)" : "scale(1)",
+                        }}
+                        data-testid={`dot-hiw-${i}`}
+                        aria-label={`Show step ${i + 1}`}
+                      />
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* App screenshot images — one per step */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12 mt-8">
-              {HOW_IT_WORKS_STEPS.map((step) => (
-                <div
-                  key={`img-${step.number}`}
-                  className="rounded-2xl overflow-hidden bg-[#F0F6FB] border border-[#D0E3ED]"
-                  data-testid={`img-hiw-${step.number}`}
-                >
-                  <img
-                    src={step.image}
-                    alt={step.title}
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                  />
                 </div>
-              ))}
-            </div>
+              </div>
 
-            {/* CTA */}
-            <div className="flex justify-center">
-              <button
-                className="font-bold rounded-full px-10 py-3 text-sm text-white transition-colors"
-                style={{ backgroundColor: "#EE5F3F" }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#D94E30")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#EE5F3F")}
-                data-testid="btn-check-rate-hiw"
-              >
-                Check Your Rate
-              </button>
+              {/* ── RIGHT: Heading + numbered steps + CTA ── */}
+              <div className="w-full lg:w-[52%]">
+                <h2
+                  className="text-2xl md:text-[30px] font-extrabold leading-tight mb-8"
+                  style={{ color: "#113B5E" }}
+                  data-testid="heading-how-it-works"
+                >
+                  How a personal loan with LendingClub works
+                </h2>
+
+                {/* Steps */}
+                <div className="flex flex-col gap-1 mb-8">
+                  {HOW_IT_WORKS_STEPS.map((step, i) => {
+                    const isActive = activeHiw === i;
+                    return (
+                      <button
+                        key={step.number}
+                        className="flex items-start gap-4 text-left rounded-xl px-4 py-4 transition-all duration-200 w-full"
+                        style={{
+                          backgroundColor: isActive ? "#EFF5FA" : "transparent",
+                          borderLeft: isActive ? "3px solid #0077B3" : "3px solid transparent",
+                        }}
+                        onClick={() => { setActiveHiw(i); restartHiwTimer(); }}
+                        data-testid={`step-hiw-${step.number}`}
+                      >
+                        {/* Number circle */}
+                        <div
+                          className="w-10 h-10 rounded-full text-white flex items-center justify-center font-extrabold text-sm shrink-0 mt-0.5 transition-colors duration-200"
+                          style={{ backgroundColor: isActive ? "#0077B3" : "#8BAABB" }}
+                        >
+                          {step.number}
+                        </div>
+
+                        <div>
+                          <h3
+                            className="font-extrabold text-[15px] leading-snug mb-1 transition-colors duration-200"
+                            style={{ color: isActive ? "#0A3A5C" : "#4A6A80" }}
+                          >
+                            {step.title}
+                          </h3>
+                          <p
+                            className="text-sm leading-relaxed transition-all duration-200"
+                            style={{
+                              color: "#4A6A80",
+                              maxHeight: isActive ? "80px" : "0px",
+                              overflow: "hidden",
+                              opacity: isActive ? 1 : 0,
+                            }}
+                          >
+                            {step.description}
+                          </p>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* CTA */}
+                <button
+                  className="font-bold rounded-full px-9 py-3 text-sm text-white transition-colors"
+                  style={{ backgroundColor: "#EE5F3F" }}
+                  onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#D94E30")}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#EE5F3F")}
+                  data-testid="btn-check-rate-hiw"
+                >
+                  Check Your Rate
+                </button>
+              </div>
             </div>
           </div>
         </section>
