@@ -278,27 +278,26 @@ export default function Home() {
                 </div>
 
                 {/* CTA */}
-                <button
-                  className="font-bold px-12 py-3 text-sm transition-colors border"
-                  style={{ backgroundColor: "#ffffff", color: "#113B5E", borderColor: "#113B5E", borderWidth: "1px", borderStyle: "solid", borderRadius: "8px" }}
+                <a
+                  href="/verify"
+                  className="inline-block font-bold px-12 py-3 text-sm transition-colors"
+                  style={{ backgroundColor: "#ffffff", color: "#113B5E", border: "1px solid #113B5E", borderRadius: "8px" }}
                   onMouseEnter={(e) => {
-                    const btn = e.currentTarget as HTMLButtonElement;
-                    btn.style.backgroundColor = "#0077B3";
-                    btn.style.color = "#ffffff";
-                    btn.style.borderColor = "#0077B3";
-                    btn.style.borderRadius = "8px";
+                    const el = e.currentTarget as HTMLAnchorElement;
+                    el.style.backgroundColor = "#0077B3";
+                    el.style.color = "#ffffff";
+                    el.style.borderColor = "#0077B3";
                   }}
                   onMouseLeave={(e) => {
-                    const btn = e.currentTarget as HTMLButtonElement;
-                    btn.style.backgroundColor = "#ffffff";
-                    btn.style.color = "#113B5E";
-                    btn.style.borderColor = "#113B5E";
-                    btn.style.borderRadius = "8px";
+                    const el = e.currentTarget as HTMLAnchorElement;
+                    el.style.backgroundColor = "#ffffff";
+                    el.style.color = "#113B5E";
+                    el.style.borderColor = "#113B5E";
                   }}
-                  data-testid="btn-check-rate-hiw"
+                  data-testid="btn-start-verification-hiw"
                 >
-                  Check Your Rate
-                </button>
+                  Start Verification
+                </a>
               </div>
             </div>
           </div>
