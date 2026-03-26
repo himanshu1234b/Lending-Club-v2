@@ -350,17 +350,27 @@ export default function Home() {
         </section>
 
         {/* ── App Download ── */}
-        <section className="py-16 bg-[#051121] text-white">
+        <section className="py-24 bg-[#EFF5FA]">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-extrabold mb-4 leading-tight">
+              {/* Image — left side */}
+              <div className="flex justify-center order-1">
+                <img
+                  src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F14Hq7vxTrLPpeXFCACXMZa%2Ffe41e3745fd28cad2dd657217645d61e%2FGroup_1000002031.svg&w=768&q=75"
+                  alt="LendingClub mobile app screens"
+                  className="max-w-sm w-full"
+                  data-testid="img-app-screens"
+                />
+              </div>
+              {/* Text — right side */}
+              <div className="order-2">
+                <h2 className="text-2xl md:text-3xl font-extrabold mb-4 leading-tight" style={{ color: "#113B5E" }}>
                   Your membership gets better in the app
                 </h2>
-                <p className="text-gray-300 text-base mb-4">
+                <p className="text-base mb-4" style={{ color: "#4A6A80" }}>
                   Make the smartest money move of the day.
                 </p>
-                <p className="text-gray-300 text-sm mb-8">
+                <p className="text-sm mb-8" style={{ color: "#4A6A80" }}>
                   Download the LendingClub app now.⁶
                 </p>
                 <div className="flex gap-4 flex-wrap">
@@ -379,14 +389,6 @@ export default function Home() {
                     />
                   </a>
                 </div>
-              </div>
-              <div className="flex justify-center">
-                <img
-                  src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F14Hq7vxTrLPpeXFCACXMZa%2Ffe41e3745fd28cad2dd657217645d61e%2FGroup_1000002031.svg&w=768&q=75"
-                  alt="LendingClub mobile app screens"
-                  className="max-w-xs w-full"
-                  data-testid="img-app-screens"
-                />
               </div>
             </div>
           </div>
