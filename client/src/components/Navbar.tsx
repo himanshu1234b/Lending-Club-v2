@@ -1,115 +1,114 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Menu, X, ChevronDown, User, Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { ChevronDown, X, Menu } from "lucide-react";
+
+const NAV_LINKS = [
+  { name: "Borrowing", hasDropdown: true },
+  { name: "Banking", hasDropdown: true },
+  { name: "Business", hasDropdown: true },
+  { name: "Investing", hasDropdown: true },
+  { name: "Resources", hasDropdown: false },
+  { name: "Help", hasDropdown: false },
+];
 
 export function Navbar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const navLinks = [
-    { name: "Borrowing", href: "#", hasDropdown: true },
-    { name: "Banking", href: "#", hasDropdown: true },
-    { name: "Business", href: "#", hasDropdown: true },
-    { name: "Investing", href: "#", hasDropdown: true },
-    { name: "Resources", href: "#" },
-    { name: "Help", href: "#" },
-  ];
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 shadow-sm">
+    <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 shadow-[0_1px_4px_rgba(0,0,0,0.06)]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          
-          {/* Logo Section */}
-          <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="bg-[#0077B3] p-1.5 rounded-sm">
-                <div className="w-5 h-5 border-2 border-white rounded-full"></div>
-              </div>
-              <span className="text-2xl font-bold text-[#113B5E] tracking-tight">LendingClub</span>
-            </Link>
-          </div>
+        <div className="flex items-center justify-between h-[72px]">
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <div key={link.name} className="relative group">
-                <button className="flex items-center text-[#113B5E] font-semibold hover:text-[#0077B3] transition-colors py-2">
-                  {link.name}
-                  {link.hasDropdown && <ChevronDown className="ml-1 w-4 h-4" />}
-                </button>
-              </div>
+          {/* ── Logo ── */}
+          <Link href="/" className="flex items-center gap-2 shrink-0" data-testid="link-logo">
+            {/* Official LC logo from their CDN */}
+            <img
+              src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F430y3e8y3R3HxGyrCyFEIp%2Ff66f71535483f5f7d79ab1bfbe942f2d%2Ffooter-logo-9446281179e20db6c0c3fa91d5683a2e.svg&w=480&q=75"
+              alt="LendingClub"
+              className="h-8"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+                const fallback = document.createElement("span");
+                fallback.className = "text-xl font-extrabold text-[#113B5E]";
+                fallback.textContent = "LendingClub";
+                e.currentTarget.parentNode?.appendChild(fallback);
+              }}
+            />
+          </Link>
+
+          {/* ── Desktop Nav ── */}
+          <nav className="hidden lg:flex items-center gap-1">
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.name}
+                className="flex items-center gap-0.5 px-3 py-2 text-sm font-semibold text-[#113B5E] hover:text-[#0077B3] transition-colors rounded-md hover:bg-[#0077B3]/5"
+                data-testid={`nav-${link.name.toLowerCase()}`}
+              >
+                {link.name}
+                {link.hasDropdown && <ChevronDown className="w-3.5 h-3.5 opacity-70" />}
+              </button>
             ))}
-          </div>
+          </nav>
 
-          {/* Right Side Actions */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <Button variant="ghost" size="icon" className="text-[#113B5E] hover:text-[#0077B3]">
-              <Search className="w-5 h-5" />
-            </Button>
-            <Button 
-              variant="outline" 
-              className="border-[#0077B3] text-[#0077B3] hover:bg-[#0077B3]/5 font-bold rounded-full px-6"
+          {/* ── Desktop CTAs ── */}
+          <div className="hidden lg:flex items-center gap-3">
+            <button
+              className="px-5 py-2 text-sm font-bold text-[#0077B3] border border-[#0077B3] rounded-full hover:bg-[#0077B3]/5 transition-colors"
+              data-testid="btn-sign-in"
             >
               Sign In
-            </Button>
-            <Button 
-              className="bg-[#EE5F3F] hover:bg-[#D94E30] text-white font-bold rounded-full px-6 shadow-md hover:shadow-lg transition-all"
+            </button>
+            <button
+              className="px-5 py-2 text-sm font-bold text-white bg-[#EE5F3F] rounded-full hover:bg-[#D94E30] transition-colors shadow-sm"
+              data-testid="btn-check-rate-nav"
             >
               Check Your Rate
-            </Button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-[#113B5E] hover:text-[#0077B3] p-2"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
+
+          {/* ── Mobile Hamburger ── */}
+          <button
+            className="lg:hidden p-2 text-[#113B5E] hover:text-[#0077B3]"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle navigation menu"
+            data-testid="btn-mobile-menu"
+          >
+            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-          <div className="px-4 pt-2 pb-6 space-y-1">
-            {navLinks.map((link) => (
-              <a
+      {/* ── Mobile Menu ── */}
+      {mobileOpen && (
+        <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full left-0">
+          <div className="max-w-[1400px] mx-auto px-4 py-4 space-y-1">
+            {NAV_LINKS.map((link) => (
+              <button
                 key={link.name}
-                href={link.href}
-                className="block px-3 py-4 text-base font-medium text-[#113B5E] border-b border-gray-50 hover:bg-gray-50"
+                className="flex justify-between items-center w-full px-3 py-3.5 text-sm font-semibold text-[#113B5E] border-b border-gray-50 hover:bg-gray-50 rounded-md transition-colors"
+                data-testid={`mobile-nav-${link.name.toLowerCase()}`}
               >
-                <div className="flex justify-between items-center">
-                  {link.name}
-                  {link.hasDropdown && <ChevronDown className="w-4 h-4 text-gray-400" />}
-                </div>
-              </a>
+                {link.name}
+                {link.hasDropdown && <ChevronDown className="w-4 h-4 text-gray-400" />}
+              </button>
             ))}
-            <div className="mt-6 flex flex-col gap-3 px-3">
-              <Button 
-                variant="outline" 
-                className="w-full justify-center border-[#0077B3] text-[#0077B3] font-bold rounded-full"
+            <div className="pt-4 flex flex-col gap-3">
+              <button
+                className="w-full py-3 text-sm font-bold text-[#0077B3] border border-[#0077B3] rounded-full hover:bg-[#0077B3]/5 transition-colors"
+                data-testid="mobile-btn-sign-in"
               >
                 Sign In
-              </Button>
-              <Button 
-                className="w-full justify-center bg-[#EE5F3F] hover:bg-[#D94E30] text-white font-bold rounded-full"
+              </button>
+              <button
+                className="w-full py-3 text-sm font-bold text-white bg-[#EE5F3F] rounded-full hover:bg-[#D94E30] transition-colors"
+                data-testid="mobile-btn-check-rate"
               >
                 Check Your Rate
-              </Button>
+              </button>
             </div>
           </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 }
