@@ -202,7 +202,7 @@ export default function Home() {
 
               {/* ── LEFT: Auto-switching app screenshot ── */}
               <div className="w-full lg:w-[48%] shrink-0">
-                <div className="relative rounded-3xl overflow-hidden bg-[#EFF5FA] aspect-[4/3]">
+                <div className="relative rounded-3xl overflow-hidden bg-transparent aspect-[4/3]">
                   {HOW_IT_WORKS_STEPS.map((step, i) => (
                     <img
                       key={step.number}
@@ -220,10 +220,11 @@ export default function Home() {
                       <button
                         key={i}
                         onClick={() => { setActiveHiw(i); restartHiwTimer(); }}
-                        className="w-2 h-2 rounded-full transition-all duration-300"
+                        className="w-3 h-3 transition-all duration-300"
                         style={{
-                          backgroundColor: activeHiw === i ? "#0077B3" : "#B8D4E6",
-                          transform: activeHiw === i ? "scale(1.3)" : "scale(1)",
+                          backgroundColor: activeHiw === i ? "#EE5F3F" : "#F5C4B8",
+                          transform: activeHiw === i ? "scale(1.2)" : "scale(1)",
+                          borderRadius: "2px",
                         }}
                         data-testid={`dot-hiw-${i}`}
                         aria-label={`Show step ${i + 1}`}
@@ -244,29 +245,27 @@ export default function Home() {
                 </h2>
 
                 {/* Steps */}
-                <div className="flex flex-col gap-4 mb-8">
+                <div className="flex flex-col gap-6 mb-8">
                   {HOW_IT_WORKS_STEPS.map((step) => (
                     <div
                       key={step.number}
-                      className="flex items-start gap-4 text-left px-4 py-4"
+                      className="flex items-start gap-4 text-left px-2"
                       data-testid={`step-hiw-${step.number}`}
                     >
-                      {/* Number circle */}
+                      {/* Orange square dot */}
                       <div
-                        className="w-10 h-10 rounded-full text-white flex items-center justify-center font-extrabold text-sm shrink-0 mt-0.5"
-                        style={{ backgroundColor: "#0077B3" }}
-                      >
-                        {step.number}
-                      </div>
+                        className="w-3 h-3 shrink-0 mt-2"
+                        style={{ backgroundColor: "#EE5F3F", borderRadius: "2px" }}
+                      />
 
                       <div>
                         <h3
-                          className="font-extrabold text-[15px] leading-snug mb-1"
+                          className="font-extrabold text-[18px] leading-snug mb-2"
                           style={{ color: "#0A3A5C" }}
                         >
                           {step.title}
                         </h3>
-                        <p className="text-sm leading-relaxed" style={{ color: "#4A6A80" }}>
+                        <p className="text-[15px] leading-relaxed" style={{ color: "#4A6A80" }}>
                           {step.description}
                         </p>
                       </div>
