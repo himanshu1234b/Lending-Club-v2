@@ -471,28 +471,42 @@ export default function Home() {
         {/* ── FAQ ── */}
         <section className="py-16 bg-[#F3F5F9]">
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-              {/* Left: Heading */}
-              <div className="lg:sticky lg:top-8">
+            <div className="flex flex-col lg:flex-row gap-12 items-start">
+              {/* Left: Heading — 35% */}
+              <div className="lg:sticky lg:top-8 w-full lg:w-[35%] shrink-0">
                 <h2 className="text-2xl md:text-[32px] font-extrabold text-[#113B5E] leading-tight mb-4">
                   Questions?<br />We've Got Answers
                 </h2>
-                <p className="text-gray-500 text-base mb-6">
+                <p className="text-gray-500 text-base">
                   Can't find what you're looking for?
                 </p>
-                <a
-                  href="#"
-                  className="inline-block font-bold text-[#0077B3] underline underline-offset-2 hover:text-[#0055A3] text-sm"
+              </div>
+              {/* Right: FAQ items + button — remaining 65% */}
+              <div className="w-full lg:flex-1">
+                <div className="bg-white rounded-2xl shadow-sm px-6 py-2 mb-6">
+                  {FAQ_ITEMS.map((item) => (
+                    <FAQItem key={item.question} question={item.question} answer={item.answer} />
+                  ))}
+                </div>
+                <button
                   data-testid="link-help-center"
+                  className="font-bold px-12 py-3 text-sm transition-colors"
+                  style={{ backgroundColor: "#ffffff", color: "#113B5E", border: "1px solid #113B5E", borderRadius: "8px" }}
+                  onMouseEnter={(e) => {
+                    const btn = e.currentTarget as HTMLButtonElement;
+                    btn.style.backgroundColor = "#0077B3";
+                    btn.style.color = "#ffffff";
+                    btn.style.borderColor = "#0077B3";
+                  }}
+                  onMouseLeave={(e) => {
+                    const btn = e.currentTarget as HTMLButtonElement;
+                    btn.style.backgroundColor = "#ffffff";
+                    btn.style.color = "#113B5E";
+                    btn.style.borderColor = "#113B5E";
+                  }}
                 >
                   Visit our Help Center
-                </a>
-              </div>
-              {/* Right: FAQ items */}
-              <div className="bg-white rounded-2xl shadow-sm px-6 py-2">
-                {FAQ_ITEMS.map((item) => (
-                  <FAQItem key={item.question} question={item.question} answer={item.answer} />
-                ))}
+                </button>
               </div>
             </div>
           </div>
