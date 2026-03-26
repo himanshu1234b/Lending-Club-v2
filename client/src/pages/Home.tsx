@@ -427,7 +427,7 @@ export default function Home() {
 
                 {/* Stats Row */}
                 <div className="flex flex-row items-center mt-10">
-                  <div className="flex flex-col items-center flex-1 px-2">
+                  <div className="flex flex-col items-center flex-1 px-1">
                     <img
                       src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F2Ze1d8RfxR6Zy4MPgzbsfF%2F8828b542cfc44cb29f41452bacaafc86%2F_100B_.svg&w=256&q=75"
                       alt="$100B+"
@@ -436,7 +436,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="w-px self-stretch bg-gray-300 mx-1" />
-                  <div className="flex flex-col items-center flex-1 px-2">
+                  <div className="flex flex-col items-center flex-1 px-1">
                     <img
                       src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2FsWxbeO4Wn0aOTOoPJ8NdN%2Fc1ba292d505420fa99be4cd5dc9b0707%2F5M.svg&w=256&q=75"
                       alt="5M+"
@@ -445,7 +445,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="w-px self-stretch bg-gray-300 mx-1" />
-                  <div className="flex flex-col items-center flex-1 px-2">
+                  <div className="flex flex-col items-center flex-1 px-1">
                     <img
                       src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F2gFq2AcjbnfazY39dSKhP7%2Fcba1005d5c51c97c547fdcc9aba1b5b5%2F10K_Trustpilot.svg&w=256&q=75"
                       alt="10K+ Trustpilot Reviews"
