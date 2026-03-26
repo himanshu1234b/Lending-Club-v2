@@ -244,50 +244,34 @@ export default function Home() {
                 </h2>
 
                 {/* Steps */}
-                <div className="flex flex-col gap-1 mb-8">
-                  {HOW_IT_WORKS_STEPS.map((step, i) => {
-                    const isActive = activeHiw === i;
-                    return (
-                      <button
-                        key={step.number}
-                        className="flex items-start gap-4 text-left rounded-xl px-4 py-4 transition-all duration-200 w-full"
-                        style={{
-                          backgroundColor: isActive ? "#EFF5FA" : "transparent",
-                          borderLeft: isActive ? "3px solid #0077B3" : "3px solid transparent",
-                        }}
-                        onClick={() => { setActiveHiw(i); restartHiwTimer(); }}
-                        data-testid={`step-hiw-${step.number}`}
+                <div className="flex flex-col gap-4 mb-8">
+                  {HOW_IT_WORKS_STEPS.map((step) => (
+                    <div
+                      key={step.number}
+                      className="flex items-start gap-4 text-left px-4 py-4"
+                      data-testid={`step-hiw-${step.number}`}
+                    >
+                      {/* Number circle */}
+                      <div
+                        className="w-10 h-10 rounded-full text-white flex items-center justify-center font-extrabold text-sm shrink-0 mt-0.5"
+                        style={{ backgroundColor: "#0077B3" }}
                       >
-                        {/* Number circle */}
-                        <div
-                          className="w-10 h-10 rounded-full text-white flex items-center justify-center font-extrabold text-sm shrink-0 mt-0.5 transition-colors duration-200"
-                          style={{ backgroundColor: isActive ? "#0077B3" : "#8BAABB" }}
-                        >
-                          {step.number}
-                        </div>
+                        {step.number}
+                      </div>
 
-                        <div>
-                          <h3
-                            className="font-extrabold text-[15px] leading-snug mb-1 transition-colors duration-200"
-                            style={{ color: isActive ? "#0A3A5C" : "#4A6A80" }}
-                          >
-                            {step.title}
-                          </h3>
-                          <p
-                            className="text-sm leading-relaxed transition-all duration-200"
-                            style={{
-                              color: "#4A6A80",
-                              maxHeight: isActive ? "80px" : "0px",
-                              overflow: "hidden",
-                              opacity: isActive ? 1 : 0,
-                            }}
-                          >
-                            {step.description}
-                          </p>
-                        </div>
-                      </button>
-                    );
-                  })}
+                      <div>
+                        <h3
+                          className="font-extrabold text-[15px] leading-snug mb-1"
+                          style={{ color: "#0A3A5C" }}
+                        >
+                          {step.title}
+                        </h3>
+                        <p className="text-sm leading-relaxed" style={{ color: "#4A6A80" }}>
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
                 {/* CTA */}
