@@ -434,7 +434,6 @@ export default function Home() {
                       className="h-20"
                       data-testid="stat-100b"
                     />
-                    <p className="text-gray-600 text-base mt-2 text-center font-medium">In loans issued</p>
                   </div>
                   <div className="w-px self-stretch bg-gray-300 mx-2" />
                   <div className="flex flex-col items-center flex-1 px-4">
@@ -444,7 +443,6 @@ export default function Home() {
                       className="h-20"
                       data-testid="stat-5m"
                     />
-                    <p className="text-gray-600 text-base mt-2 text-center font-medium">Members served</p>
                   </div>
                   <div className="w-px self-stretch bg-gray-300 mx-2" />
                   <div className="flex flex-col items-center flex-1 px-4">
@@ -454,7 +452,6 @@ export default function Home() {
                       className="h-20"
                       data-testid="stat-trustpilot"
                     />
-                    <p className="text-gray-600 text-base mt-2 text-center font-medium">Trustpilot reviews</p>
                   </div>
                 </div>
               </div>
