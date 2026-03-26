@@ -426,33 +426,35 @@ export default function Home() {
                 </a>
 
                 {/* Stats Row */}
-                <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10 mt-10">
-                  <div className="flex flex-col items-center">
+                <div className="flex flex-row items-center mt-10">
+                  <div className="flex flex-col items-center flex-1 px-4">
                     <img
                       src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F2Ze1d8RfxR6Zy4MPgzbsfF%2F8828b542cfc44cb29f41452bacaafc86%2F_100B_.svg&w=256&q=75"
                       alt="$100B+"
-                      className="h-14"
+                      className="h-20"
                       data-testid="stat-100b"
                     />
-                    <p className="text-gray-600 text-sm mt-2 text-center">In loans issued</p>
+                    <p className="text-gray-600 text-base mt-2 text-center font-medium">In loans issued</p>
                   </div>
-                  <div className="flex flex-col items-center">
+                  <div className="w-px self-stretch bg-gray-300 mx-2" />
+                  <div className="flex flex-col items-center flex-1 px-4">
                     <img
                       src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2FsWxbeO4Wn0aOTOoPJ8NdN%2Fc1ba292d505420fa99be4cd5dc9b0707%2F5M.svg&w=256&q=75"
                       alt="5M+"
-                      className="h-14"
+                      className="h-20"
                       data-testid="stat-5m"
                     />
-                    <p className="text-gray-600 text-sm mt-2 text-center">Members served</p>
+                    <p className="text-gray-600 text-base mt-2 text-center font-medium">Members served</p>
                   </div>
-                  <div className="flex flex-col items-center">
+                  <div className="w-px self-stretch bg-gray-300 mx-2" />
+                  <div className="flex flex-col items-center flex-1 px-4">
                     <img
                       src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F2gFq2AcjbnfazY39dSKhP7%2Fcba1005d5c51c97c547fdcc9aba1b5b5%2F10K_Trustpilot.svg&w=256&q=75"
                       alt="10K+ Trustpilot Reviews"
-                      className="h-14"
+                      className="h-20"
                       data-testid="stat-trustpilot"
                     />
-                    <p className="text-gray-600 text-sm mt-2 text-center">Trustpilot reviews</p>
+                    <p className="text-gray-600 text-base mt-2 text-center font-medium">Trustpilot reviews</p>
                   </div>
                 </div>
               </div>
