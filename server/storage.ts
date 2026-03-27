@@ -1,18 +1,28 @@
-import { db } from "./db";
-import { inquiries, type InsertInquiry, type Inquiry } from "@shared/schema";
+import { type InsertInquiry, type Inquiry } from "@shared/schema";
 
 export interface IStorage {
   createInquiry(inquiry: InsertInquiry): Promise<Inquiry>;
 }
 
-export class DatabaseStorage implements IStorage {
+export class MemStorage implements IStorage {
+  private inquiries: Map<number, Inquiry>;
+  private currentId: number;
+
+  constructor() {
+    this.inquiries = new Map();
+    this.currentId = 1;
+  }
+
   async createInquiry(insertInquiry: InsertInquiry): Promise<Inquiry> {
-    const [inquiry] = await db
-      .insert(inquiries)
-      .values(insertInquiry)
-      .returning();
+    const id = this.currentId++;
+    const inquiry: Inquiry = {
+      ...insertInquiry,
+      id,
+      createdAt: new Date()
+    };
+    this.inquiries.set(id, inquiry);
     return inquiry;
   }
 }
 
-export const storage = new DatabaseStorage();
+export const storage = new MemStorage();

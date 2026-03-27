@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { HeroSection } from "@/components/HeroSection";
@@ -13,7 +14,7 @@ const PRODUCTS_TABS = [
 
 const PRODUCTS_CONTENT = {
   personal: {
-    image: "https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F78Ijn41dqqjYyTjJMl87nc%2Fb0876b30a9c54d2908cab2301248fc15%2FLC_Hero_Image_lg.jpg&w=1920&q=75",
+    image: "/asset 7.jpeg",
     alt: "Mother and daughter sharing a joyful moment in their kitchen",
     heading: "Up to $60,000 with rates starting as low as 6.53% APR¹",
     body: "With the ability to choose a loan amount of up to $60,000, LendingClub offers fixed rates and a monthly repayment plan to fit within your budget. We understand the importance of getting the money you need, so we work to have funds disbursed to you quickly upon loan approval.",
@@ -141,67 +142,77 @@ export default function Home() {
         {/* ── "We're rewriting the rules" ── */}
         <section className="py-16 bg-white">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#113B5E] text-center mb-10 max-w-3xl mx-auto leading-tight">
+            <h2 className="text-[2rem] leading-[1.125em] lg:text-[3rem] lg:leading-[1.0833333333em] font-black text-[#113B5E] text-center mb-[65px] max-w-[990px] mx-auto">
               We're rewriting the rules of traditional banking, and we only win
               when our customers succeed. We've helped over 5 million members
               reach their goals, and we're just getting started!
             </h2>
 
-            {/* Tab Row */}
-            <div className="flex justify-center gap-3 mb-10">
+            {/* Redesigned Tab Row */}
+            <div className="flex justify-center flex-wrap gap-8 md:gap-16 lg:gap-24 mb-16 px-4">
               {PRODUCTS_TABS.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id as "personal" | "auto" | "banking")}
-                  data-testid={`tab-${tab.id}`}
-                  className={`px-5 py-2 rounded-full font-bold text-sm border transition-all ${
-                    activeTab === tab.id
-                      ? "bg-[#113B5E] text-white border-[#113B5E]"
-                      : "bg-white text-[#113B5E] border-[#113B5E] hover:bg-[#113B5E]/5"
-                  }`}
+                <div 
+                  key={tab.id} 
+                  className="flex flex-col items-center group cursor-pointer w-full sm:w-auto" 
+                  onClick={() => setActiveTab(tab.id as any)}
                 >
-                  {tab.label}
-                </button>
+                  <button
+                    onClick={() => setActiveTab(tab.id as any)}
+                    data-testid={`tab-${tab.id}`}
+                    className={`text-[17px] font-extrabold pb-4 transition-colors duration-500 ${
+                      activeTab === tab.id ? "text-[#113B5E]" : "text-[#113B5E]/60"
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                  <div className="relative w-full sm:w-[180px] md:w-[240px] lg:w-[320px] h-[3px] bg-[#D8E1E8] overflow-hidden">
+                    <div className={`absolute inset-0 bg-[#EE5F3F] transition-transform duration-700 ease-in-out origin-left ${
+                      activeTab === tab.id ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                    }`} />
+                  </div>
+                </div>
               ))}
             </div>
 
             {/* Tab Content */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              <div className="order-2 lg:order-1">
-                <h3 className="text-2xl md:text-3xl font-extrabold text-[#113B5E] mb-4 leading-tight">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+              {/* Image Column (Left on Desktop) */}
+              <div className="order-1 lg:order-1 relative group">
+                {/* Red Brand Accent */}
+                <div className="absolute top-8 left-8 -right-4 -bottom-4 bg-[#EE5F3F] rounded-2xl -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-500" />
+                
+                <div className="rounded-2xl overflow-hidden shadow-xl relative min-h-[380px] bg-white border border-gray-100">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={activeTab}
+                      src={product.image}
+                      alt={product.alt}
+                      className="w-full h-[380px] object-cover"
+                      data-testid={`img-product-${activeTab}`}
+                      initial={{ x: 100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: -100, opacity: 0 }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                    />
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              {/* Text Column (Right on Desktop) */}
+              <div className="order-2 lg:order-2">
+                <h3 className="text-2xl md:text-3xl lg:text-[2.25rem] font-black text-[#113B5E] mb-6 leading-[1.1666666667em]">
                   {product.heading}
                 </h3>
-                <p className="text-gray-600 text-base leading-relaxed mb-6">
+                <p className="text-[#4A6A80] text-base leading-relaxed mb-10 max-w-xl">
                   {product.body}
                 </p>
                 <a
                   href={product.href}
                   data-testid="btn-product-learn-more"
-                  className="inline-block font-bold px-12 py-3 text-sm transition-colors"
-                  style={{ backgroundColor: "#ffffff", color: "#113B5E", border: "1px solid #113B5E", borderRadius: "8px" }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLAnchorElement;
-                    el.style.backgroundColor = "#0077B3";
-                    el.style.color = "#ffffff";
-                    el.style.borderColor = "#0077B3";
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLAnchorElement;
-                    el.style.backgroundColor = "#ffffff";
-                    el.style.color = "#113B5E";
-                    el.style.borderColor = "#113B5E";
-                  }}
+                  className="inline-block font-bold px-12 py-3 text-sm transition-all rounded-lg border border-[#113B5E] text-[#113B5E] hover:bg-[#0077B3] hover:text-white hover:border-[#0077B3]"
                 >
                   {product.cta}
                 </a>
-              </div>
-              <div className="order-1 lg:order-2 rounded-2xl overflow-hidden shadow-xl">
-                <img
-                  src={product.image}
-                  alt={product.alt}
-                  className="w-full h-[380px] object-cover"
-                  data-testid={`img-product-${activeTab}`}
-                />
               </div>
             </div>
           </div>

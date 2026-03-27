@@ -1,53 +1,6 @@
 import { Link } from "wouter";
 
 export function Footer() {
-  const footerSections = [
-    {
-      title: "Company",
-      links: [
-        "About Us",
-        "Careers",
-        "Investor Relations",
-        "Media Center",
-        "Social Impact",
-      ],
-    },
-    {
-      title: "Products",
-      links: [
-        "Personal Loans",
-        "Business Loans",
-        "Auto Refinancing",
-        "Patient Solutions",
-        "LevelUp Checking",
-        "LevelUp Savings",
-        "CDs",
-      ],
-    },
-    {
-      title: "Resources",
-      links: [
-        "Blog",
-        "Resource Center",
-        "Rates & Fees",
-        "Help Center",
-        "Contact Us",
-        "Security",
-      ],
-    },
-    {
-      title: "Legal",
-      links: [
-        "Terms of Use",
-        "Privacy Policy",
-        "Patriot Act",
-        "Accessibility",
-        "Licenses",
-        "Preference Center",
-      ],
-    },
-  ];
-
   const socialLinks = [
     { label: "Facebook", href: "https://www.facebook.com/LendingClubTeam", icon: "f" },
     { label: "Twitter", href: "https://twitter.com/LendingClub", icon: "𝕏" },
@@ -70,85 +23,177 @@ export function Footer() {
     <footer className="bg-white border-t border-gray-200 pt-16 pb-8">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Logo + Address */}
-        <div className="mb-10">
-          <Link href="/" className="inline-flex items-center gap-2 mb-4">
-            <div className="bg-[#0077B3] p-1.5 rounded-sm">
-              <div className="w-5 h-5 border-2 border-white rounded-full"></div>
-            </div>
-            <span className="text-xl font-bold text-[#113B5E] tracking-tight">LendingClub</span>
-          </Link>
-          <p className="text-sm text-gray-500">88 Kearny Street, Suite 600</p>
-          <p className="text-sm text-gray-500">San Francisco, CA 94108</p>
-          <p className="text-xs text-gray-500 mt-2">
-            If you have special access needs and are having problems accessing this website, please call{" "}
-            <a href="tel:888-596-3157" className="text-[#0077B3] hover:underline font-medium">888-596-3157</a>.
-          </p>
-        </div>
+        {/* Top Footer Main Sections (4-Column Layout) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16 mb-20">
+          
+          {/* Column 1: WHAT WE OFFER */}
+          <div>
+            <h3 className="text-[#113B5E] text-base leading-relaxed uppercase tracking-[1px] font-extrabold mb-6">WHAT WE OFFER</h3>
+            <ul className="space-y-3">
+              {[
+                "Personal Loans", "Personal Banking", "Auto Refinancing", 
+                "Financing Solutions", "Business Loans", "Institutional Investing", 
+                "Other Types of Loans"
+              ].map(link => (
+                <li key={link}>
+                  <a href="#" className="text-[#0077B3] text-[17px] leading-relaxed font-normal">{link}</a>
+                </li>
+              ))}
+              <li className="pt-2">
+                <a href="#" className="text-[#D8412E] text-[17px] font-bold flex items-center gap-1 group">
+                  Apply for a Personal Loan <span className="text-[14px] group-hover:translate-x-0.5 transition-transform">❯</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#D8412E] text-[17px] font-bold flex items-center gap-1 group">
+                  Apply for a Bank Account <span className="text-[14px] group-hover:translate-x-0.5 transition-transform">❯</span>
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        {/* Top Footer Links */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-          {footerSections.map((section) => (
-            <div key={section.title}>
-              <h3 className="text-[#113B5E] font-bold mb-4 text-sm">{section.title}</h3>
+          {/* Column 2: RESOURCES & LEGAL */}
+          <div className="space-y-14">
+            <div>
+              <h3 className="text-[#113B5E] text-base leading-relaxed uppercase tracking-[1px] font-extrabold mb-6">RESOURCES</h3>
               <ul className="space-y-3">
-                {section.links.map((link) => (
+                {["Resource Center", "Personal Loan Rates & Fees", "Member Benefits", "Customer Reviews", "Glossary"].map(link => (
                   <li key={link}>
-                    <a
-                      href="#"
-                      className="text-gray-500 hover:text-[#0077B3] text-sm transition-colors"
-                    >
-                      {link}
-                    </a>
+                    <a href="#" className="text-[#0077B3] text-[17px] leading-relaxed font-normal">{link}</a>
                   </li>
                 ))}
               </ul>
             </div>
-          ))}
+            <div>
+              <h3 className="text-[#113B5E] text-base leading-relaxed uppercase tracking-[1px] font-extrabold mb-6">LEGAL</h3>
+              <ul className="space-y-3">
+                {[
+                  "Terms of Use", "Privacy Policy", "California Notice of Collection", 
+                  "Data Collection and Use", "Accessibility", "SEC Filing"
+                ].map(link => (
+                  <li key={link}>
+                    <a href="#" className="text-[#0077B3] text-[17px] leading-relaxed font-normal">{link}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Column 3: ABOUT US */}
+          <div>
+            <h3 className="text-[#113B5E] text-base leading-relaxed uppercase tracking-[1px] font-extrabold mb-6">ABOUT US</h3>
+            <ul className="space-y-3">
+              {[
+                "CRA Public File", "Company", "Leadership", "Careers", "Media Center", 
+                "Corporate Governance", "Investor Relations", "Contact"
+              ].map(link => (
+                <li key={link}>
+                  <a href="#" className="text-[#0077B3] text-[17px] leading-relaxed font-normal">{link}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: ACCOUNT & PLATFORM */}
+          <div>
+            <h3 className="text-[#113B5E] text-base leading-relaxed uppercase tracking-[1px] font-extrabold mb-6">ACCOUNT</h3>
+            <ul className="space-y-3 mb-10">
+              {["Sign In", "Mobile App", "Help"].map(link => (
+                <li key={link}>
+                  <a href="#" className="text-[#0077B3] text-[17px] leading-relaxed font-normal">{link}</a>
+                </li>
+              ))}
+              <li className="flex items-center gap-2">
+                <img src="/asset 21.svg" alt="" className="w-8 h-auto" />
+                <a href="#" className="text-[#0077B3] text-[17px] leading-relaxed font-normal">Your Privacy Choices</a>
+              </li>
+            </ul>
+
+            <div className="space-y-6">
+              <h4 className="text-[#113B5E] font-bold text-[13px] tracking-wider uppercase leading-tight">
+                POWERED BY THE LC<sup>TM</sup><br />PLATFORM
+              </h4>
+              <div className="flex items-center gap-2 mb-6">
+                <img src="/asset 22.png" alt="LC" className="h-7 w-auto" />
+              </div>
+              
+              <div className="flex flex-col gap-3">
+                <a href="#" className="inline-block transition-opacity hover:opacity-80">
+                  <img src="/asset 23.svg" alt="App Store" className="h-[44px]" />
+                </a>
+                <a href="#" className="inline-block transition-opacity hover:opacity-80">
+                  <img src="/asset 24.svg" alt="Get it on Google Play" className="h-[44px]" />
+                </a>
+              </div>
+
+              <div className="flex items-center gap-6 pt-10">
+                {socialLinks.map((social) => (
+                  <a key={social.label} href={social.href} className="text-[#C5D0D9] hover:text-[#0077B3] transition-colors">
+                    {social.label === "Twitter" ? (
+                      <span className="text-xl">𝕏</span>
+                    ) : (
+                      <span className="text-xl font-bold">{social.icon}</span>
+                    )}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-200 my-8"></div>
+        <div className="border-t border-gray-200 my-10"></div>
 
-        {/* Social + Badges */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
-          <div className="flex gap-5">
-            {socialLinks.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                aria-label={s.label}
-                className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:text-[#0077B3] hover:border-[#0077B3] transition-colors text-xs font-bold"
-                data-testid={`link-social-${s.label.toLowerCase()}`}
-              >
-                {s.icon}
-              </a>
-            ))}
+        {/* Logo/Address | Access Text | Trust Badges (3-Column Layout: 25%, 25%, 50%) */}
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-10">
+          {/* Column 1: Logo & Address (25%) */}
+          <div className="flex-shrink-0 w-full lg:w-[25%]">
+            <Link href="/" className="inline-flex items-center gap-2 mb-6">
+              <img
+                src="/asset 25.svg"
+                alt="LendingClub"
+                className="h-10 w-auto"
+              />
+            </Link>
+            <div className="text-sm text-gray-500 space-y-1">
+              <p>88 Kearny Street, Suite 600</p>
+              <p>San Francisco, CA 94108</p>
+            </div>
           </div>
-          <div className="flex items-center gap-4">
+
+          {/* Column 2: Access Text (25%) */}
+          <div className="w-full lg:w-[25%]">
+            <p className="text-[13px] text-gray-500 leading-relaxed font-medium">
+              If you have special access needs and are having problems accessing this website, please call{" "}
+              <a href="tel:888-596-3157" className="text-[#0077B3] hover:underline font-bold">888-596-3157</a>.
+            </p>
+          </div>
+
+          {/* Column 3: Trust Badges (50%) */}
+          <div className="flex flex-wrap items-center gap-16 w-full lg:w-[50%] lg:justify-end">
             <img
-              src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2FTFLaSnHm8EWhnLFLztUHs%2Fcf998fae6a2af55c30d47f77ada17b05%2Fequal-housing-d16d75efa073487c9240a00f63c0dff3__1_.svg&w=256&q=75"
+              src="/asset 26.svg"
               alt="Equal Housing Lender"
-              className="h-8"
+              className="w-[7rem] opacity-90 transition-opacity hover:opacity-100"
               data-testid="badge-equal-housing"
             />
             <img
-              src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F3DJ0HimAiud33PTGEkoyy0%2Ffe8dd5993d3cfa41cced566e7dc9bcfc%2Faccredited-business-e985aa65c32c383c9fc3937216b214cd.svg&w=256&q=75"
+              src="/asset 27.svg"
               alt="Accredited Business"
-              className="h-8"
+              className="w-[7rem] opacity-90 transition-opacity hover:opacity-100"
               data-testid="badge-accredited"
             />
             <img
-              src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F6HUat6EBbfWqRaS4F3MyNq%2F113ff004c08829e8fa0965233a534834%2Fveri-sign-9f261f90e9b94fff5a44feb82f07c280.svg&w=480&q=75"
+              src="/asset 28.svg"
               alt="VeriSign Secured"
-              className="h-8"
+              className="w-[7rem] opacity-90 transition-opacity hover:opacity-100"
               data-testid="badge-verisign"
             />
           </div>
         </div>
 
         {/* Legal Disclaimers */}
-        <div className="border-t border-gray-100 pt-8 text-xs text-gray-400 space-y-3 leading-relaxed">
+        <div className="border-t border-gray-100 pt-8 text-[13px] text-gray-600 space-y-4 leading-relaxed font-medium">
           <p>
             Credit eligibility is not guaranteed. APR and other credit terms depend upon credit score and other key financing characteristics, including but not limited to the amount financed, loan term length, and credit usage and history.
           </p>

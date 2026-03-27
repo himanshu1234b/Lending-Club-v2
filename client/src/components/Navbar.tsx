@@ -52,28 +52,9 @@ export function Navbar() {
 
           {/* ── Desktop CTAs ── */}
           <div className="hidden lg:flex items-center gap-3">
-            <button
-              className="px-5 py-2 text-sm font-bold text-[#0077B3] border border-[#0077B3] rounded-full hover:bg-[#0077B3]/5 transition-colors"
-              data-testid="btn-sign-in"
-            >
-              Sign In
-            </button>
             <Link
               href="/verify"
-              className="inline-block font-bold px-5 py-2 text-sm transition-colors"
-              style={{ backgroundColor: "#ffffff", color: "#113B5E", border: "1px solid #113B5E", borderRadius: "8px" }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLAnchorElement;
-                el.style.backgroundColor = "#0077B3";
-                el.style.color = "#ffffff";
-                el.style.borderColor = "#0077B3";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLAnchorElement;
-                el.style.backgroundColor = "#ffffff";
-                el.style.color = "#113B5E";
-                el.style.borderColor = "#113B5E";
-              }}
+              className="inline-block font-bold px-6 py-2 text-sm transition-all rounded-lg border border-[#EE5F3F] text-[#EE5F3F] hover:bg-[#EE5F3F] hover:text-white"
               data-testid="btn-start-verification-nav"
             >
               Start Verification
@@ -107,28 +88,9 @@ export function Navbar() {
               </button>
             ))}
             <div className="pt-4 flex flex-col gap-3">
-              <button
-                className="w-full py-3 text-sm font-bold text-[#0077B3] border border-[#0077B3] rounded-full hover:bg-[#0077B3]/5 transition-colors"
-                data-testid="mobile-btn-sign-in"
-              >
-                Sign In
-              </button>
               <Link
                 href="/verify"
-                className="block w-full text-center font-bold py-3 text-sm transition-colors"
-                style={{ backgroundColor: "#ffffff", color: "#113B5E", border: "1px solid #113B5E", borderRadius: "8px" }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.backgroundColor = "#0077B3";
-                  el.style.color = "#ffffff";
-                  el.style.borderColor = "#0077B3";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.backgroundColor = "#ffffff";
-                  el.style.color = "#113B5E";
-                  el.style.borderColor = "#113B5E";
-                }}
+                className="block w-full text-center font-bold py-3 text-sm transition-all rounded-lg border border-[#EE5F3F] text-[#EE5F3F] hover:bg-[#EE5F3F] hover:text-white"
                 data-testid="mobile-btn-start-verification"
               >
                 Start Verification
