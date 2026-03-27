@@ -25,7 +25,7 @@ export function Navbar() {
             <img
               src="https://www.lendingclub.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Forqped9h4wgz%2F430y3e8y3R3HxGyrCyFEIp%2Ff66f71535483f5f7d79ab1bfbe942f2d%2Ffooter-logo-9446281179e20db6c0c3fa91d5683a2e.svg&w=480&q=75"
               alt="LendingClub"
-              className="h-8"
+              className="w-[152px] h-[22px] sm:w-auto sm:h-8"
               onError={(e) => {
                 e.currentTarget.style.display = "none";
                 const fallback = document.createElement("span");

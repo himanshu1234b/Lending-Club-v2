@@ -119,6 +119,7 @@ export default function Home() {
 
   const [activeHiw, setActiveHiw] = useState(0);
   const hiwTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const tabTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const restartHiwTimer = () => {
     if (hiwTimerRef.current) clearInterval(hiwTimerRef.current);
@@ -127,9 +128,24 @@ export default function Home() {
     }, 4000);
   };
 
+  const restartTabTimer = () => {
+    if (tabTimerRef.current) clearInterval(tabTimerRef.current);
+    tabTimerRef.current = setInterval(() => {
+      setActiveTab((prev) => {
+        const currentIndex = PRODUCTS_TABS.findIndex((t) => t.id === prev);
+        const nextIndex = (currentIndex + 1) % PRODUCTS_TABS.length;
+        return PRODUCTS_TABS[nextIndex].id as any;
+      });
+    }, 5000);
+  };
+
   useEffect(() => {
     restartHiwTimer();
-    return () => { if (hiwTimerRef.current) clearInterval(hiwTimerRef.current); };
+    restartTabTimer();
+    return () => { 
+      if (hiwTimerRef.current) clearInterval(hiwTimerRef.current);
+      if (tabTimerRef.current) clearInterval(tabTimerRef.current);
+    };
   }, []);
 
   return (
@@ -149,15 +165,21 @@ export default function Home() {
             </h2>
 
             {/* Redesigned Tab Row */}
-            <div className="flex justify-center flex-wrap gap-8 md:gap-16 lg:gap-24 mb-16 px-4">
+            <div className="hidden sm:flex justify-center flex-wrap gap-8 md:gap-16 lg:gap-24 mb-16 px-4">
               {PRODUCTS_TABS.map((tab) => (
                 <div 
                   key={tab.id} 
                   className="flex flex-col items-center group cursor-pointer w-full sm:w-auto" 
-                  onClick={() => setActiveTab(tab.id as any)}
+                  onClick={() => {
+                    setActiveTab(tab.id as any);
+                    restartTabTimer();
+                  }}
                 >
                   <button
-                    onClick={() => setActiveTab(tab.id as any)}
+                    onClick={() => {
+                      setActiveTab(tab.id as any);
+                      restartTabTimer();
+                    }}
                     data-testid={`tab-${tab.id}`}
                     className={`text-[17px] font-extrabold pb-4 transition-colors duration-500 ${
                       activeTab === tab.id ? "text-[#113B5E]" : "text-[#113B5E]/60"
