@@ -3,7 +3,9 @@ import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
 
+console.log("[Server] Initializing Express app...");
 const app = express();
+console.log("[Server] Creating HTTP server...");
 const httpServer = createServer(app);
 
 declare module "http" {
@@ -60,7 +62,13 @@ app.use((req, res, next) => {
 });
 
 // Register routes after middlewares
-registerRoutes(httpServer, app);
+console.log("[Server] Registering routes...");
+try {
+  registerRoutes(httpServer, app);
+  console.log("[Server] Routes registered successfully");
+} catch (err) {
+  console.error("[Server] Critical error during route registration:", err);
+}
 
 // Error handling middleware (should be last)
 app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
