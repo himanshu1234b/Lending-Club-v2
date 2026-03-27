@@ -61,9 +61,18 @@ export function Navbar() {
             </Link>
           </div>
 
+          {/* ── Mobile CTA (Header) ── */}
+          <Link
+            href="/verify"
+            className="lg:hidden flex items-center justify-center font-extrabold px-4 h-[42px] text-[10px] uppercase tracking-tighter transition-all rounded-lg border border-[#EE5F3F] text-[#EE5F3F] hover:bg-[#EE5F3F] hover:text-white mr-1"
+            data-testid="header-mobile-btn-start-verification"
+          >
+            Start Verification
+          </Link>
+
           {/* ── Mobile Hamburger ── */}
           <button
-            className="lg:hidden p-2 text-[#113B5E] hover:text-[#0077B3]"
+            className="lg:hidden p-1.5 text-[#113B5E] hover:text-[#0077B3]"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation menu"
             data-testid="btn-mobile-menu"
